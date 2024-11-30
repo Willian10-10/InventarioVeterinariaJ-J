@@ -18,7 +18,7 @@ from tkinter.font import names
 
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView
 
 from gestorUser.views import index
 
@@ -26,6 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path("", index, name="home"),
-    path("usuarios/", include("gestorUser.urls")),
-    path("", TemplateView.as_view(template_name="index.html" ), name="index"),
+    path("", include("gestorUser.urls")),
+    path("", TemplateView.as_view(template_name="index.html"), name="index"  ),
 ]

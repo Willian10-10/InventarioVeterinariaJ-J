@@ -5,6 +5,7 @@ from rest_framework.reverse import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 
+
 # Create your views here.
 @login_required
 def index(request):
@@ -16,3 +17,4 @@ class SignUpView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
     success_message = "¡Usuario creado exitosamente!"
+
