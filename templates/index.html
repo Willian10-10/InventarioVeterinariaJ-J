@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block titulo %}
+    INDEX 😎😎😎
+{% endblock %}
+
+{% block contenido %}
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <h1> Bienvenido, {{ user.username }} eres un superusuario</h1>
+        {% else %}
+            <h1> Bienvenido, {{ user.username }} eres un usuario normal</h1>
+        {% endif %}
+    {% endif %}
+{% endblock %}
