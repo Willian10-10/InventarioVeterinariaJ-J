@@ -1,0 +1,16 @@
+gestorProductos/__pycache__/__init__.cpython-312.pyc
+gestorProductos/__pycache__/admin.cpython-312.pyc
+gestorProductos/__pycache__/apps.cpython-312.pyc
+gestorProductos/__pycache__/models.cpython-312.pyc
+gestorProductos/migrations/__pycache__/__init__.cpython-312.pyc
+gestorUser/__pycache__/__init__.cpython-312.pyc
+gestorUser/__pycache__/admin.cpython-312.pyc
+gestorUser/__pycache__/apps.cpython-312.pyc
+gestorUser/__pycache__/models.cpython-312.pyc
+gestorUser/__pycache__/urls.cpython-312.pyc
+gestorUser/__pycache__/views.cpython-312.pyc
+gestorUser/migrations/__pycache__/__init__.cpython-312.pyc
+inventarioVeterinariaJJ/__pycache__/__init__.cpython-312.pyc
+inventarioVeterinariaJJ/__pycache__/settings.cpython-312.pyc
+inventarioVeterinariaJJ/__pycache__/urls.cpython-312.pyc
+inventarioVeterinariaJJ/__pycache__/wsgi.cpython-312.pyc
