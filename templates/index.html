@@ -5,11 +5,24 @@
 {% endblock %}
 
 {% block contenido %}
-    {% if user.is_authenticated %}
-        {% if user.is_superuser %}
-            <h1> Bienvenido, {{ user.username }} eres un superusuario</h1>
-        {% else %}
-            <h1> Bienvenido, {{ user.username }} eres un usuario normal</h1>
+    <div style="text-align: center; margin-top: 20px;">
+        {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+                <h1> Bienvenido, {{ user.username }} eres un superusuario</h1>
+            {% else %}
+                <h1> Bienvenido, {{ user.username }} eres un usuario normal</h1>
+            {% endif %}
         {% endif %}
-    {% endif %}
+
+        <h2>Productos Disponibles</h2>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+            {% for producto in productos %}
+                <div style="border: 1px solid #ddd; padding: 10px; width: 200px; text-align: center;">
+                    <h3>{{ producto.nombre }}</h3>
+                    <p>{{ producto.descripcion }}</p>
+                    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

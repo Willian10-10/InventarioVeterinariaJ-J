@@ -6,18 +6,13 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">LOGIN</div>
+        <div class="sidebar-brand-text mx-3">Veterinaria J&J</div>
     </a>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Panel</span></a>
-    </li>
 
     {% if user.is_superuser %}
         <!-- Divider -->
@@ -69,47 +64,8 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        Veterinaria a tu alcance 
     </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-           aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>paginas</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
-             data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Pantallas de inicio de sesión
-                    :</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Registro</a>
-                <a class="collapse-item" href="forgot-password.html">
-                    Has olvidado tu contraseña</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Otras páginas:</h6>
-                <a class="collapse-item" href="404.html">404 Página</a>
-                <a class="collapse-item active" href="blank.html">Página en blanco
-                </a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Gráficos</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Mesas</span></a>
-    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
