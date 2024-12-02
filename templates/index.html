@@ -6,34 +6,24 @@
 {% endblock %}
 
 {% block contenido %}
-<<<<<<< HEAD
-<div style="text-align: center; margin-top: 20px;">
-    {% if user.is_authenticated %}
-        {% if user.is_superuser %}
-            <h1> Bienvenido, {{ user.username }} eres un superusuario</h1>
-        {% else %}
-            <h1> Bienvenido, {{ user.username }} eres un usuario normal</h1>
-        {% endif %}
-    {% endif %}
-    
-    <h2>Productos Disponibles</h2>
-    
-    <!-- Sección de imágenes de mascotas para hacer la página más atractiva -->
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-        <img src="{% static 'img/perro1.jpg' %}" alt="Perro adorable" style="width: 200px; height: auto; border-radius: 10px;">
-        <img src="{% static 'img/gato1.jpg' %}" alt="Gato feliz" style="width: 200px; height: auto; border-radius: 10px;">
-        <img src="{% static 'img/mascota_feliz.jpg' %}" alt="Mascota contenta" style="width: 200px; height: auto; border-radius: 10px;">
-=======
-    <div style="text-align: center; margin-top: 20px;">
+
+
+        <!-- Sección de imágenes de mascotas para hacer la página más atractiva -->  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+            <img src="{% static 'img/perro1.jpg' %}" alt="Perro adorable" style="width: 200px; height: auto; border-radius: 10px;">
+            <img src="{% static 'img/gato1.jpg' %}" alt="Gato feliz" style="width: 200px; height: auto; border-radius: 10px;">
+            <img src="{% static 'img/mascota_feliz.jpg' %}" alt="Mascota contenta" style="width: 200px; height: auto; border-radius: 10px;">
+
+        <div style="text-align: center; margin-top: 20px;">
+
         {% if user.is_authenticated %}
             {% if user.is_superuser %}
                 <h1>Bienvenido, {{ user.username }} eres un superusuario</h1>
             {% else %}
-                <h1>Bienvenido, {{ user.username }} eres un usuario normal</h1>
+                <h1>Bienvenido doctor, {{ user.username }} </h1>
             {% endif %}
         {% endif %}
 
-        <h2>Productos Disponibles</h2>
+        <h2>¿Desea ver los productos?</h2>
         <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
             {% for producto in productos %}
                 <div style="border: 1px solid #ddd; padding: 10px; width: 200px; text-align: center;">
@@ -47,7 +37,7 @@
         <div style="margin-top: 20px;">
             <a href="{% url 'gestionar_productos' %}" class="btn btn-primary">Gestionar Productos</a>
         </div>
->>>>>>> cf5d36b009482f1c263c4400fe8678f71950b38c
+
     </div>
     
     <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
