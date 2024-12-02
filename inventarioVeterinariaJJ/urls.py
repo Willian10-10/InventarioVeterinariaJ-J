@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from gestorProductos.views import *
+from gestorProductos import views
 
 
 from gestorUser.views import index
@@ -29,6 +30,12 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("", index, name="home"),
     path("", include("gestorUser.urls")),
-    path("", TemplateView.as_view(template_name="index.html"), name="index"  ),
-    path("productosAdmin/", inventarioAdmin, name='inventarioAdmin')
+    path("", TemplateView.as_view(template_name="index.html"), name="index"  ), #
+    path("productosAdmin/", views.inventarioAdmin, name='productosAdmin'),
+    path('', views.lista_productos, name='lista_productos'),
+    path('productosAdmin/agregar/', views.agregar_producto, name='agregar_producto'),
+    path('productosAdmin/eliminar/<int:producto_id>/', views.eliminar_producto, name='eliminar_producto'),
+    path('productosAdmin/editar/<int:producto_id>/', views.editar_producto, name='editar_producto'),
+    path('categoria/agregar/', views.agregar_categoria, name='agregar_categoria'),
+    path('categoria/eliminar/<int:categoria_id>/', views.eliminar_categoria, name='eliminar_categoria'),
 ]
