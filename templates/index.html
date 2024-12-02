@@ -1,16 +1,16 @@
 {% extends "base/base.html" %}
 
 {% block titulo %}
-    Veterinaria Chucky 😎😎😎
+    Veterinaria Chucky 😎
 {% endblock %}
 
 {% block contenido %}
     <div style="text-align: center; margin-top: 20px;">
         {% if user.is_authenticated %}
             {% if user.is_superuser %}
-                <h1> Bienvenido, {{ user.username }} eres un superusuario</h1>
+                <h1>Bienvenido, {{ user.username }} eres un superusuario</h1>
             {% else %}
-                <h1> Bienvenido, {{ user.username }} eres un usuario normal</h1>
+                <h1>Bienvenido, {{ user.username }} eres un usuario normal</h1>
             {% endif %}
         {% endif %}
 
@@ -24,5 +24,10 @@
                 </div>
             {% endfor %}
         </div>
+
+        <div style="margin-top: 20px;">
+            <a href="{% url 'gestionar_productos' %}" class="btn btn-primary">Gestionar Productos</a>
+        </div>
     </div>
 {% endblock %}
+
