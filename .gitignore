@@ -1,3 +1,5 @@
+__pycache__/
+*.pycgit rm -r --cached *.pyc
 gestorProductos/__pycache__/__init__.cpython-312.pyc
 gestorProductos/__pycache__/admin.cpython-312.pyc
 gestorProductos/__pycache__/apps.cpython-312.pyc
