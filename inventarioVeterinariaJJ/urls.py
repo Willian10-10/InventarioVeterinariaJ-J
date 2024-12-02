@@ -27,6 +27,7 @@ from gestorUser.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('gestor/', include('gestorUser.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
     path("", index, name="home"),
     path("", include("gestorUser.urls")),

@@ -1,54 +1,72 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-{% block titulo %}
-    Veterinaria Chucky 😎
-{% endblock %}
-
 {% block contenido %}
-
-
-        <!-- Sección de imágenes de mascotas para hacer la página más atractiva -->  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-            <img src="{% static 'img/perro1.jpg' %}" alt="Perro adorable" style="width: 200px; height: auto; border-radius: 10px;">
-            <img src="{% static 'img/gato1.jpg' %}" alt="Gato feliz" style="width: 200px; height: auto; border-radius: 10px;">
-            <img src="{% static 'img/mascota_feliz.jpg' %}" alt="Mascota contenta" style="width: 200px; height: auto; border-radius: 10px;">
-
-        <div style="text-align: center; margin-top: 20px;">
-
-        {% if user.is_authenticated %}
-            {% if user.is_superuser %}
-                <h1>Bienvenido, {{ user.username }} eres un superusuario</h1>
-            {% else %}
-                <h1>Bienvenido doctor, {{ user.username }} </h1>
-            {% endif %}
+<!-- Sección de bienvenida y mensaje del usuario -->
+<div class="text-center my-5">
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <h1>Bienvenido, {{ user.username }} (Superusuario)</h1>
+        {% else %}
+            <h1>Bienvenido, {{ user.username }} (Usuario)</h1>
         {% endif %}
+    {% endif %}
+    <p>Desde aquí puedes gestionar el sistema: usuarios, productos, pedidos, etc.</p>
+</div>
 
-        <h2>¿Desea ver los productos?</h2>
-        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-            {% for producto in productos %}
-                <div style="border: 1px solid #ddd; padding: 10px; width: 200px; text-align: center;">
-                    <h3>{{ producto.nombre }}</h3>
-                    <p>{{ producto.descripcion }}</p>
-                    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
-                </div>
-            {% endfor %}
+<!-- Sección de imágenes atractivas -->
+<div class="d-flex justify-content-center flex-wrap gap-4 my-4">
+    <img src="{% static 'img/perro1.jpg' %}" alt="Perro adorable" class="img-fluid rounded shadow" style="max-width: 300px;">
+    <img src="{% static 'img/gato1.jpg' %}" alt="Gato feliz" class="img-fluid rounded shadow" style="max-width: 300px;">
+    <img src="{% static 'img/mascota_feliz.jpg' %}" alt="Mascota contenta" class="img-fluid rounded shadow" style="max-width: 300px;">
+</div>
+
+<!-- Sección de gestión y botones -->
+<div class="container my-5">
+    <div class="row text-center">
+        <!-- Gestión de usuarios -->
+        <div class="col-md-4 mb-4">
+            <h3>Gestión de Usuarios</h3>
+            <a href="{% url 'ver_usuarios' %}" class="btn btn-info mb-2"><i class="fas fa-users"></i> Ver usuarios</a>
+
+            <a href="{% url 'añadir_usuario' %}" class="btn btn-success"><i class="fas fa-user-plus"></i> Añadir nuevo usuario</a>
         </div>
+        
+        <!-- Gestión de productos -->
+        <div class="col-md-4 mb-4">
+            <h3>Gestión de Productos</h3>
+            <a href="{% url 'ver_productos' %}" class="btn btn-primary mb-2"><i class="fas fa-box"></i> Ver productos</a><br>
+            <a href="{% url 'agregar_producto' %}" class="btn btn-success mb-3">
+                <i class="fas fa-cart-plus"></i> Agregar Producto
+            </a>
+            
 
-        <div style="margin-top: 20px;">
-            <a href="{% url 'gestionar_productos' %}" class="btn btn-primary">Gestionar Productos</a>
         </div>
-
+        
+        <!-- Gestión de pedidos -->
+        <div class="col-md-4 mb-4">
+            <h3>Gestión de Pedidos</h3>
+            <a href="#" class="btn btn-danger mb-2"><i class="fas fa-truck"></i> Ver pedidos</a><br>
+            <a href="#" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Añadir nuevo pedido</a>
+        </div>
     </div>
-    
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+</div>
+
+<!-- Sección de productos -->
+<div class="text-center my-5">
+    <div class="d-flex justify-content-center flex-wrap gap-4">
         {% for producto in productos %}
-            <div style="border: 1px solid #ddd; padding: 10px; width: 200px; text-align: center;">
-                <h3>{{ producto.nombre }}</h3>
-                <p>{{ producto.descripcion }}</p>
-                <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+            <div class="card" style="width: 18rem; margin-bottom: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ producto.nombre }}</h5>
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+                    <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-primary"><i class="fas fa-eye"></i> Ver detalle</a>
+                </div>
             </div>
         {% endfor %}
     </div>
 </div>
-{% endblock %}
 
+{% endblock %}

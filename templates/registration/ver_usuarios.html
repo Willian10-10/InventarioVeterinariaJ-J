@@ -1,0 +1,32 @@
+<!-- gestorUser/ver_usuarios.html -->
+{% extends "base/base.html" %}
+
+{% block contenido %}
+    <div class="container my-4">
+        <h2 class="text-center">Usuarios Registrados</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre de Usuario</th>
+                    <th>Email</th>
+                    <th>Fecha de Creación</th>
+                </tr>
+            </thead>
+            <a href="{% url 'index' %}" class="btn btn-primary mb-3">Volver al Inicio</a>
+
+            <tbody>
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.date_joined }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3">No hay usuarios registrados.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

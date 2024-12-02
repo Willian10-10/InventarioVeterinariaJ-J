@@ -1,0 +1,32 @@
+<!-- gestorUsers/templates/gestorUsers/superuser_dashboard.html -->
+
+{% extends "base/base.html" %}
+
+{% block titulo %}
+    Panel de Administrador
+{% endblock %}
+
+{% block contenido %}
+    <div style="text-align: center; margin-top: 20px;">
+        <h1>Bienvenido, {{ user.username }} (Superusuario)</h1>
+        <p>Desde aquí puedes gestionar todo el sistema: usuarios, productos, pedidos, etc.</p>
+        
+        <div>
+            <h3>Gestión de Usuarios</h3>
+            <a href="#">Ver usuarios</a> | 
+            <a href="#">Añadir nuevo usuario</a>
+        </div>
+        
+        <div>
+            <h3>Gestión de Productos</h3>
+            <a href="#">Ver productos</a> | 
+            <a href="#">Añadir nuevo producto</a>
+        </div>
+        
+        <div>
+            <h3>Gestión de Pedidos</h3>
+            <a href="#">Ver pedidos</a> | 
+            <a href="#">Añadir nuevo pedido</a>
+        </div>
+    </div>
+{% endblock %}

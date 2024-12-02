@@ -1,15 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
 from .models import Producto, Categoria
 from .forms import ProductoForm
-
-# Create your views here.
 from .models import Producto
+from django.contrib.auth.decorators import login_required
 
 def inventarioAdmin(request):
     productos = Producto.objects.all()
     return render(request, 'gestorProductos/productosAdmin.html', {'productos': productos})
 
+
+# Vista para listar productos
+@login_required
+def productos_admin(request):
+    productos = Producto.objects.all()
+    return render(request, 'productosAdmin.html', {'productos': productos})
 
 def lista_productos(request):
     productos = Producto.objects.all()
@@ -17,17 +21,17 @@ def lista_productos(request):
     return render(request, 'productos.html', {'productos': productos, 'categorias': categorias})
 
 
+# Vista para agregar productos
 def agregar_producto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('productosAdmin') 
+            form.save()  # Guardar el nuevo producto en la base de datos
+            return redirect('productosAdmin')  # Redirigir a la lista de productos
     else:
-        form = ProductoForm()
-    
-    return render(request, 'gestorProductos/agregar_producto.html', {'form': form})
+        form = ProductoForm()  # Crear un formulario vacío
 
+    return render(request, 'gestorProductos/agregar_producto.html', {'form': form})
 # Vista para eliminar un producto
 def eliminar_producto(request, producto_id):
     # Obtener el producto a eliminar

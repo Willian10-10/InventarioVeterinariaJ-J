@@ -1,13 +1,30 @@
 {% extends 'base/base.html' %}
 
 {% block contenido %}
-<div class="container mt-5">
-    <h1>Registra o edita tu Producto😊</h1>
-    <form method="post">
+<div class="container mt-5 mb-5">
+
+    <!-- Botón en la esquina superior derecha -->
+    <div class="position-relative">
+        <a href="{% url 'index' %}" class="btn btn-primary position-absolute" style="top: 0; right: 0;">
+            Volver al Inicio
+        </a>
+    </div>
+
+    <h1 class="text-center mb-4">Registra tu Producto😊</h1>
+
+    <form method="post" class="row justify-content-center">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary mt-3">Guardar</button>
-        <a href="{% url 'productosAdmin' %}" class="btn btn-secondary mt-3">Cancelar</a>
+        
+        <!-- Campo de formulario -->
+        <div class="col-12 col-md-6">
+            {{ form.as_p }}
+        </div>
+
+        <!-- Botones centrados -->
+        <div class="col-12 text-center mt-3">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{% url 'productosAdmin' %}" class="btn btn-secondary ml-2">Cancelar</a>
+        </div>
     </form>
 </div>
 {% endblock %}
