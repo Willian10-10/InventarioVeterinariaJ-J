@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+
+{% block contenido %}
+<div class="alert alert-info display-3 text-center mb-3" style="background-color: #FFB6C1; color: #3c3c3c; border-radius: 10px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); padding: 15px;">
+    <div class="d-flex justify-content-center align-items-center">        
+        <span style="font-family: 'Comic Sans MS', sans-serif; font-weight: bold; font-size: 3rem; color: #d93e3e;">
+            Lista de Productos 🐶
+        </span>
+    </div>
+</div>
+
+<a href="{% url 'agregar_producto' %}" class="btn btn-success mb-3">Agregar Producto</a>
+<a href="{% url 'index' %}" class="btn btn-primary mb-3">Volver al Inicio</a>
+
+<table class="table">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Categoría</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% if productos %}
+            {% for producto in productos %}
+            <tr class="table-light">
+                <th scope="row">{{ producto.id }}</th>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.categoria }}</td>
+                <td>
+                    <a href="{% url 'editar_producto' producto.id %}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6" class="text-center">No hay productos registrados</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+
+</div>
+{% endblock %}

@@ -22,28 +22,35 @@
 <!-- Sección de gestión y botones -->
 <div class="container my-5">
     <div class="row text-center">
+        <!-- Gestión de productos -->
+        <div class="col-md-4 mb-4">
+            <h3>Gestión de Productos</h3>
+            {% if user.is_superuser %}
+                <a href="{% url 'productosAdmin' %}" class="btn btn-primary mb-2"><i class="fas fa-box"></i> Ver productos</a><br>
+                <a href="{% url 'agregar_producto' %}" class="btn btn-success mb-3"><i class="fas fa-cart-plus"></i> Agregar Producto</a>
+            {% else %}
+                <a href="{% url 'productosUsuario' %}" class="btn btn-info mb-2"><i class="fas fa-box"></i> Ver productos</a><br>
+                <a href="{% url 'agregar_producto' %}" class="btn btn-success"><i class="fas fa-cart-plus"></i> Crear Producto</a>
+            {% endif %}
+        </div>
+
         <!-- Gestión de usuarios -->
+        {% if user.is_superuser %}
         <div class="col-md-4 mb-4">
             <h3>Gestión de Usuarios</h3>
             <a href="{% url 'ver_usuarios' %}" class="btn btn-info mb-2"><i class="fas fa-users"></i> Ver usuarios</a>
             <a href="{% url 'añadir_usuario' %}" class="btn btn-success"><i class="fas fa-user-plus"></i> Añadir nuevo usuario</a>
         </div>
-        
-        <!-- Gestión de productos -->
-        <div class="col-md-4 mb-4">
-            <h3>Gestión de Productos</h3>
-            <a href="{% url 'productosAdmin' %}" class="btn btn-primary mb-2"><i class="fas fa-box"></i> Ver productos</a><br>
-            <a href="{% url 'agregar_producto' %}" class="btn btn-success mb-3">
-                <i class="fas fa-cart-plus"></i> Agregar Producto
-            </a>
-        </div>
-        
+        {% endif %}
+
         <!-- Gestión de pedidos -->
+        {% if user.is_superuser %}
         <div class="col-md-4 mb-4">
             <h3>Gestión de Pedidos</h3>
             <a href="#" class="btn btn-danger mb-2"><i class="fas fa-truck"></i> Ver pedidos</a><br>
             <a href="#" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Añadir nuevo pedido</a>
         </div>
+        {% endif %}
     </div>
 </div>
 
