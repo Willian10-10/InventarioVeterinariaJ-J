@@ -11,5 +11,4 @@ urlpatterns = [
     path('', views.index, name='index'),  # Redirección según usuario
     path('productos/', views.productos_admin, name='productosAdmin'),
     path('productos/agregar/', views.agregar_producto, name='agregar_producto'),
-    
 ]

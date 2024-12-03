@@ -9,6 +9,8 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import render
 
 
+def sobre_nosotros(request):
+    return render(request, 'sobre_nosotros.html')
 
 # Vista para ver los usuarios
 def ver_usuarios(request):

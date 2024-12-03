@@ -1,7 +1,14 @@
 
-
 {% block titulo %}
-    Panel de Administrador
+    <div>
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <p>Panel Administrador {{ user.username }}</p>
+        {% else %}
+            <p>Bienvenido, {{ user.username }}</p>
+        {% endif %}
+    {% endif %}
+</div>
 {% endblock %}
 
 <!DOCTYPE html>
