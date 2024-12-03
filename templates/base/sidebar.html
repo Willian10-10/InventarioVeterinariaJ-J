@@ -67,13 +67,17 @@
     </div>
 
     <!-- Nav Item - Sobre Nosotros -->
-    <li class="nav-item">
+    <li class="nav-item nav-sm">
         <a class="nav-link" href="{% url 'sobre_nosotros' %}">
             <i class="fas fa-info-circle"></i>
             <span>Sobre Nosotros</span>
         </a>
     </li>
 
+   <a href="{% url 'admin:login' %}" class="btn btn-primary btn-sm">
+    <i class="fas fa-user-shield"></i>
+    <span>Panel Administrativo</span>
+</a>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
