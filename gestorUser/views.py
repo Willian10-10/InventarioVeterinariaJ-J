@@ -1,3 +1,4 @@
+from sqlite3 import IntegrityError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
@@ -7,6 +8,29 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import HttpResponseForbidden
 from django.shortcuts import render
+from django.shortcuts import render, redirect
+from gestorProductos.models import Producto
+from gestorProductos.forms import ProductoForm
+
+def productos_usuario(request):
+    productos = Producto.objects.all()  # Obtiene todos los productos
+    return render(request, 'gestorUser/productosUsuario.html', {'productos': productos})
+
+@login_required
+def crear_producto_usuario(request):
+    if request.method == "POST":
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            producto = form.save(commit=False)  # No guardes aún en la base de datos
+            producto.creado_por = request.user  # Asigna el usuario autenticado
+            try:
+                producto.save()  # Guarda el producto en la base de datos
+                return redirect('lista_productos_usuario')  # Cambia al nombre correcto de tu URL
+            except IntegrityError as e:
+                return render(request, 'error.html', {'error': e})  # Opcional, para manejar errores
+    else:
+        form = ProductoForm()
+    return render(request, 'agregar_producto.html', {'form': form})
 
 
 def sobre_nosotros(request):
@@ -37,10 +61,6 @@ def ver_pedidos(request):
 def añadir_pedido(request):
     # Lógica para añadir un nuevo pedido
     return render(request, 'añadir_pedido.html')
-
-
-
-
 
 # Create your views here.
 @login_required
