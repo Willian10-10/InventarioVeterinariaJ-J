@@ -1,8 +1,8 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav {% if user.is_superuser %}bg-gradient-primary{% else %}bg-gradient-secondary{% endif %} sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% if user.is_superuser %}admin_dashboard{% else %}productosUsuario{% endif %}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -12,9 +12,9 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Dashboard -->
-
     {% if user.is_superuser %}
+    <!-- Opciones solo para el admin -->
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -24,10 +24,8 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Componentes</span>
         </a>
@@ -42,8 +40,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Utilidades</span>
         </a>
@@ -58,6 +55,7 @@
         </div>
     </li>
     {% endif %}
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -66,14 +64,23 @@
         Veterinaria a tu alcance
     </div>
 
-    <!-- Nav Item - Sobre Nosotros -->
+    <!-- Nav Item - Productos (Usuarios normales) -->
+    {% if not user.is_superuser %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'productosUsuario' %}">
+            <i class="fas fa-paw"></i>
+            <span>Productos</span>
+        </a>
+    </li>
+    {% endif %}
+
+    <!-- Nav Item - Sobre Nosotros (Todos los usuarios) -->
     <li class="nav-item">
         <a class="nav-link" href="{% url 'sobre_nosotros' %}">
             <i class="fas fa-info-circle"></i>
             <span>Sobre Nosotros</span>
         </a>
     </li>
-
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
