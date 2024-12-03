@@ -11,6 +11,9 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from gestorProductos.models import Producto
 from gestorProductos.forms import ProductoForm
+from django.urls import reverse
+
+
 
 def productos_usuario(request):
     productos = Producto.objects.all()  # Obtiene todos los productos
@@ -44,7 +47,7 @@ def ver_usuarios(request):
 
 def añadir_usuario(request):
     # Lógica para añadir un nuevo usuario
-    return render(request, 'registration/signup.html')
+    return redirect(reverse('signup'))
 
 def ver_productos(request):
     # Lógica para ver productos
