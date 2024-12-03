@@ -4,10 +4,19 @@
 {% block contenido %}
 
 <!-- Sección de imágenes atractivas -->
+<!-- Sección de imágenes atractivas con sombras mejoradas -->
 <div class="d-flex justify-content-center flex-wrap gap-4 my-4">
-    <img src="{% static 'img/perro1.jpg' %}" alt="Perro adorable" class="img-fluid rounded shadow" style="max-width: 300px;">
-    <img src="{% static 'img/gato1.jpg' %}" alt="Gato feliz" class="img-fluid rounded shadow" style="max-width: 300px;">
-    <img src="{% static 'img/mascota_feliz.jpg' %}" alt="Mascota contenta" class="img-fluid rounded shadow" style="max-width: 300px;">
+    <img src="{% static 'img/perro1.jpg' %}" alt="Perro adorable" class="img-fluid rounded" style="max-width: 300px; box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);">
+    <img src="{% static 'img/gato1.jpg' %}" alt="Gato feliz" class="img-fluid rounded" style="max-width: 300px; box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);">
+    <img src="{% static 'img/mascota_feliz.jpg' %}" alt="Mascota contenta" class="img-fluid rounded" style="max-width: 300px; box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);">
+</div>
+
+<!-- Descripción de la veterinaria -->
+<div class="container text-center my-5">
+    <h2 class="display-4 text-primary">Nuestros Productos</h2>
+    <p class="lead text-muted">
+        Ofrecemos una amplia variedad de productos para el cuidado de tus mascotas, desde alimentos de alta calidad hasta juguetes, accesorios y productos de higiene. Todo lo que necesitas para mantener a tus compañeros felices y saludables.
+    </p>
 </div>
 
 <!-- Sección de gestión y botones -->
@@ -17,7 +26,6 @@
         <div class="col-md-4 mb-4">
             <h3>Gestión de Usuarios</h3>
             <a href="{% url 'ver_usuarios' %}" class="btn btn-info mb-2"><i class="fas fa-users"></i> Ver usuarios</a>
-
             <a href="{% url 'añadir_usuario' %}" class="btn btn-success"><i class="fas fa-user-plus"></i> Añadir nuevo usuario</a>
         </div>
         
@@ -28,8 +36,6 @@
             <a href="{% url 'agregar_producto' %}" class="btn btn-success mb-3">
                 <i class="fas fa-cart-plus"></i> Agregar Producto
             </a>
-            
-
         </div>
         
         <!-- Gestión de pedidos -->
